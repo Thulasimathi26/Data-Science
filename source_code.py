@@ -4,7 +4,6 @@ Original file is located at
 
 # Upload the Dataset
 
-
 from google.colab import files
 
 uploaded = files.upload()
@@ -255,44 +254,3 @@ gr.Interface(
     description="Enter academic and demographic info to predict the final grade (G3) of a student."
 ).launch()
 
-# Install Graphviz if not installed
-!pip install graphviz
-
-from graphviz import Digraph
-from IPython.display import Image
-
-# Initialize Digraph
-dot = Digraph('Data Science Workflow', format='png')
-
-# Set graph attributes
-dot.attr(bgcolor='white', rankdir='TB', size='10')
-
-# Node style dictionary
-node_style = {
-    'style': 'filled',
-    'fontname': 'Helvetica',
-    'fontcolor': 'white',
-    'shape': 'box',
-    'fontsize': '12',
-}
-
-# Add nodes with different colors
-dot.node('A', ' Data Collection', fillcolor='#1f77b4', **node_style)
-dot.node('B', ' Data Preprocessing', fillcolor='#ff7f0e', **node_style)
-dot.node('C', ' Exploratory Data Analysis (EDA)', fillcolor='#2ca02c', **node_style)
-dot.node('D', ' Feature Engineering', fillcolor='#d62728', **node_style)
-dot.node('E', ' Model Building & Evaluation', fillcolor='#9467bd', **node_style)
-dot.node('F', ' Visualization of Results', fillcolor='#8c564b', **node_style)
-dot.node('G', ' Deployment using Gradio', fillcolor='#e377c2', **node_style)
-
-# Add directional edges
-dot.edge('A', 'B')
-dot.edge('B', 'C')
-dot.edge('C', 'D')
-dot.edge('D', 'E')
-dot.edge('E', 'F')
-dot.edge('F', 'G')
-
-# Render and display image
-dot.render('colored_workflow', format='png', cleanup=False)
-Image('colored_workflow.png')
